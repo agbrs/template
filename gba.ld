@@ -4,6 +4,9 @@ OUTPUT_ARCH(arm)
 ENTRY(__start)
 EXTERN(__RUST_INTERRUPT_HANDLER)
 
+EXTERN(__agbabi_memset)
+EXTERN(__agbabi_memcpy)
+
 MEMORY {
     ewram (w!x) : ORIGIN = 0x02000000, LENGTH = 256K
     iwram (w!x) : ORIGIN = 0x03000000, LENGTH = 32K
@@ -12,15 +15,15 @@ MEMORY {
 
 __text_start = ORIGIN(rom);
 
+INPUT (agb.a)
+
 SECTIONS {
     . = __text_start;
 
-    .crt0 : {
-		KEEP (crt0.o(.text));
-		. = ALIGN(4);
-    } > rom
 
     .text : {
+        KEEP(*(.crt0));
+        *(.crt0 .crt0*);
         *(.text .text*);
         . = ALIGN(4);
     } > rom
@@ -62,6 +65,7 @@ SECTIONS {
     .bss : {
         *(.bss .bss.*);
         . = ALIGN(4);
+        __iwram_end = ABSOLUTE(.);
     } > iwram
 
     __iwram_rom_length_bytes = __iwram_data_end - __iwram_data_start;
