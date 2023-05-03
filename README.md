@@ -20,7 +20,6 @@ You will need the following installed in order to build and run this project:
     * MacOS (brew): `brew tap ArmMbed/homebrew-formulae && brew install arm-none-eabi-gcc`
     * MacOS (without brew): Download [toolchain](https://developer.arm.com/downloads/-/gnu-rm) and add to PATH
 
-
 You will also want to install an emulator. The best support in agb is with [mgba](https://mgba.io), with
 `println!` support via `agb::println!` but any emulator should work. You'll get the best experience if
 `mgba-qt` is in your `PATH`.
@@ -73,3 +72,4 @@ First build the binary in release mode using the instructions above, then do the
 ```sh
 agb-gbafix target/thumbv4t-none-eabi/release/<your game> -o <your game>.gba
 ```
+
