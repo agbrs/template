@@ -17,6 +17,9 @@ You will need the following installed in order to build and run this project:
         Make sure you select "Add path to environment variable" during the install
     * Debian and derivatives (e.g. Ubuntu, raspberry pi OS, linux mint): `sudo apt install binutils-arm-none-eabi`
     * Arch linux and derivatives: `sudo pacman -S arm-none-eabi-binutils`
+    * MacOS (brew): `brew tap ArmMbed/homebrew-formulae && brew install arm-none-eabi-gcc`
+    * MacOS (without brew): Download [toolchain](https://developer.arm.com/downloads/-/gnu-rm) and add to PATH
+
 
 You will also want to install an emulator. The best support in agb is with [mgba](https://mgba.io), with
 `println!` support via `agb::println!` but any emulator should work. You'll get the best experience if
