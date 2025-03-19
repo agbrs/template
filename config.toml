@@ -1,0 +1,11 @@
+[build]
+target = "thumbv4t-none-eabi"
+
+[target.thumbv4t-none-eabi]
+rustflags = [
+    "-C", "link-arg=-Tlinker.ld",
+]
+
+[unstable]
+build-std = ["core"]
+build-std-features = ["panic_immediate_abort"]

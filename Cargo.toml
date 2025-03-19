@@ -4,16 +4,17 @@ version = "0.1.0"
 authors = [""]
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-agb = "0.21.3"
+agb = "0.21.3"  # Latest stable version
 
 [profile.dev]
-opt-level = 3
-debug = true
+opt-level = 3   # Optimization level for development
+debug = true    # Include debug symbols
+panic = "abort" # Reduces binary size
 
 [profile.release]
-opt-level = 3
-lto = "fat"
-debug = true
+opt-level = 3   # Maximum optimization
+lto = "fat"     # Link-time optimization
+debug = true    # Keep debug symbols
+panic = "abort" # Reduces binary size
+codegen-units = 1 # Further optimization
